@@ -21,15 +21,6 @@
           <div class="w-full sm:w-auto flex flex-col sm:flex-row gap-2 mt-4 sm:mt-0 sm:ml-4">
             <%= link_to "詳細", post,
                 class: "w-full sm:w-auto text-center px-4 py-2 text-gray-700 bg-white rounded-xl shadow-inner hover:shadow transition font-medium" %>
-
-            <% if current_user.own?(post) %>
-              <%= link_to "編集", edit_post_path(post),
-                  class: "w-full sm:w-auto text-center px-4 py-2 text-gray-700 bg-white rounded-xl shadow-inner hover:shadow transition font-medium" %>
-
-              <%= button_to "削除", post, method: :delete,
-                  class: "w-full sm:w-auto text-center px-4 py-2 text-red-600 bg-white rounded-xl shadow-inner hover:shadow transition font-medium",
-                  data: { turbo_confirm: "本当に削除しますか？" } %>
-            <% end %>
           </div>
         </div>
       <% end %>
