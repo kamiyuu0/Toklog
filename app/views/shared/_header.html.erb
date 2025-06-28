@@ -1,6 +1,6 @@
 <header class="bg-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-    
+
     <!-- ロゴリンク（ログイン状態でリンク先を変更） -->
     <div class="text-xl font-semibold text-gray-800">
       <%= link_to 'Toklog', user_signed_in? ? root_path : new_user_session_path, class: 'hover:text-blue-600 transition' %>
@@ -10,12 +10,12 @@
     <nav class="flex space-x-4 text-sm">
       <% if user_signed_in? %>
         <%= button_to 'サインアウト', destroy_user_session_path, method: :delete,
-              class: 'bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition' %>
+              class: 'px-4 py-2 text-red-600 bg-white rounded-xl shadow-inner hover:shadow hover:text-red-700 transition' %>
       <% else %>
         <%= link_to 'サインアップ', new_user_registration_path,
-              class: 'bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition' %>
+              class: 'px-4 py-2 text-blue-600 bg-white rounded-xl shadow-inner hover:shadow hover:text-blue-700 transition' %>
         <%= link_to 'サインイン', new_user_session_path,
-              class: 'bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition' %>
+              class: 'px-4 py-2 text-gray-700 bg-white rounded-xl shadow-inner hover:shadow hover:text-gray-900 transition' %>
       <% end %>
     </nav>
 
