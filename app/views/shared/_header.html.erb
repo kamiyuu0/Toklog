@@ -1,19 +1,16 @@
 <header class="bg-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-    <% if user_signed_in? %>
-      <div class="text-xl font-semibold text-gray-800">
-        <%= link_to 'MyApp', root_path, class: 'hover:text-blue-600 transition' %>
-      </div>
-    <% else %>
-      <div class="text-xl font-semibold text-gray-800">
-        <%= link_to 'MyApp', new_user_session_path, class: 'hover:text-blue-600 transition' %>
-      </div>
-    <% end %>
+    
+    <!-- ロゴリンク（ログイン状態でリンク先を変更） -->
+    <div class="text-xl font-semibold text-gray-800">
+      <%= link_to 'MyApp', user_signed_in? ? root_path : new_user_session_path, class: 'hover:text-blue-600 transition' %>
+    </div>
 
-    <nav class="space-x-4">
+    <!-- ナビゲーション -->
+    <nav class="flex space-x-4 text-sm">
       <% if user_signed_in? %>
         <%= button_to 'サインアウト', destroy_user_session_path, method: :delete,
-              class: 'inline-block bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition' %>
+              class: 'bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition' %>
       <% else %>
         <%= link_to 'サインアップ', new_user_registration_path,
               class: 'bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition' %>
@@ -21,5 +18,6 @@
               class: 'bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition' %>
       <% end %>
     </nav>
+
   </div>
 </header>
