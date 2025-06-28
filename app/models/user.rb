@@ -1,9 +1,15 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :posts, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[line]
+
+  def own?(object)
+    id == object&.user_id
+  end
 
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
