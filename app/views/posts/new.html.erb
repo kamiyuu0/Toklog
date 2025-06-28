@@ -1,9 +1,12 @@
-<% content_for :title, "New post" %>
+<% content_for :title, "徳を積む" %>
 
 <div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New post</h1>
+  <h1 class="font-bold text-4xl mb-6">徳を積む</h1>
 
   <%= render "form", post: @post %>
 
-  <%= link_to "Back to posts", posts_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <div class="mt-6">
+    <%= link_to "投稿一覧に戻る", posts_path,
+        class: "inline-block text-center px-4 py-2 text-gray-700 bg-gray-50 rounded-xl shadow-inner hover:shadow font-medium transition" %>
+  </div>
 </div>
