@@ -1,9 +1,5 @@
 <div class="space-y-3 text-sm text-center text-gray-600">
 
-  <% if devise_mapping.recoverable? && !%w[passwords registrations].include?(controller_name) %>
-    <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name),
-        class: "inline-block text-blue-600 hover:text-blue-700 transition" %>
-  <% end %>
 
   <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
     <%= link_to "確認メールが届いていませんか？", new_confirmation_path(resource_name),
