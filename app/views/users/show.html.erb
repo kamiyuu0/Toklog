@@ -1,0 +1,30 @@
+<div class="bg-white p-6 rounded-xl shadow-inner mb-8">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800 mb-2 sm:mb-0">マイページ</h1>
+      <p class="text-gray-600">
+        <span class="font-medium text-gray-800">ユーザー名：</span><%= @user.name %>
+      </p>
+    </div>
+
+    <%= link_to "プロフィールを編集", edit_user_registration_path, 
+        class: "mt-4 sm:mt-0 inline-block text-blue-600 border border-blue-200 bg-white px-4 py-2 rounded-xl shadow-inner hover:shadow transition font-medium" %>
+  </div>
+</div>
+
+<h2 class="text-xl font-semibold text-gray-800 mb-4">あなたの投稿</h2>
+<% if @posts.any? %>
+  <div id="posts" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @posts.each do |post| %>
+      <%= link_to post, class: "block bg-white rounded-xl shadow-inner hover:shadow p-5 transition" do %>
+        <div class="space-y-3">
+          <p class="text-sm text-gray-500">投稿者: <span class="font-medium text-gray-700"><%= post.user.name %></span></p>
+          <h2 class="text-lg font-semibold text-gray-800"><%= post.title %></h2>
+          <p class="text-sm text-gray-600"><%= post.recorded_on_formatted %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p class="text-center my-10 text-gray-500">投稿が見つかりませんでした。</p>
+<% end %>
