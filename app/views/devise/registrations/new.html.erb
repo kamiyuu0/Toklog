@@ -10,8 +10,14 @@
     <% end %>
 
     <div>
+      <%= f.label :name, "ユーザー名", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "例）山田太郎",
+            class: "mt-1 w-full px-4 py-2 rounded-xl bg-white shadow-inner focus:shadow-md focus:outline-none transition" %>
+    </div>
+
+    <div>
       <%= f.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "your@example.com",
+      <%= f.email_field :email, autocomplete: "email", placeholder: "your@example.com",
             class: "mt-1 w-full px-4 py-2 rounded-xl bg-white shadow-inner focus:shadow-md focus:outline-none transition" %>
     </div>
 
