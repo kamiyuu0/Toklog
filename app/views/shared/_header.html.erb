@@ -3,12 +3,14 @@
     
     <!-- ロゴリンク（左寄せ） -->
     <div class="text-xl font-semibold text-gray-800">
-      <%= link_to 'とくろぐ', user_signed_in? ? root_path : new_user_session_path, class: 'hover:text-blue-600 transition' %>
+      <%= link_to 'とくろぐ', user_signed_in? ? posts_path : root_path, class: 'hover:text-blue-600 transition' %>
     </div>
 
     <!-- ナビゲーション（右寄せ） -->
     <nav class="flex space-x-2 text-sm">
       <% if user_signed_in? %>
+        <%= link_to "徳を積む", new_post_path,
+          class: "px-3 py-2 text-blue-600 bg-gray-100 rounded-lg hover:shadow hover:text-blue-700 transition" %>
         <%= link_to 'マイページ', mypage_path,
               class: 'px-3 py-2 text-gray-700 bg-gray-100 rounded-lg hover:shadow hover:text-gray-900 transition' %>
         <%= button_to 'サインアウト', destroy_user_session_path, method: :delete,
