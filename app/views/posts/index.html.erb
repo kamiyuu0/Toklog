@@ -1,4 +1,4 @@
-<% content_for :title, "一覧画面" %>
+<% content_for :title, "徳の軌跡" %>
 
 <div class="w-full">
   <% if notice.present? %>
@@ -8,7 +8,7 @@
   <% end %>
 
   <div class="flex justify-between items-center mb-6">
-    <h1 class="font-bold text-4xl">一覧画面</h1>
+    <h1 class="font-bold text-4xl">徳の軌跡</h1>
     <%= link_to "徳を積む", new_post_path,
         class: "px-4 py-2 text-blue-600 bg-white rounded-xl shadow-inner hover:shadow font-medium transition" %>
   </div>
@@ -19,7 +19,7 @@
         <%= link_to post, class: "block bg-white rounded-xl shadow-inner hover:shadow p-5 transition" do %>
           <div class="space-y-3">
             <p class="text-sm text-gray-500">投稿者: <span class="font-medium text-gray-700"><%= post.user.name %></span></p>
-            <h2 class="text-lg font-semibold text-gray-800">タイトル: <%= post.title %></h2>
+            <h2 class="text-lg font-semibold text-gray-800"><%= post.title %></h2>
             <p class="text-sm text-gray-600"><%= post.recorded_on_formatted %></p>
           </div>
         <% end %>
