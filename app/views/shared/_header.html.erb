@@ -9,6 +9,8 @@
     <!-- ナビゲーション（右寄せ） -->
     <nav class="flex space-x-2 text-sm">
       <% if user_signed_in? %>
+        <%= link_to 'マイページ', mypage_path,
+              class: 'px-3 py-2 text-gray-700 bg-gray-100 rounded-lg hover:shadow hover:text-gray-900 transition' %>
         <%= button_to 'サインアウト', destroy_user_session_path, method: :delete,
           class: 'px-3 py-2 text-red-600 bg-gray-100 rounded-lg hover:shadow hover:text-red-700 transition' %>
       <% else %>
