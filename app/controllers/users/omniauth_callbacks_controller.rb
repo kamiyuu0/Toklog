@@ -4,7 +4,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
-  def line; basic_action end
+  def line
+    if user_signed_in?
+      link_line_account
+    else
+      basic_action
+    end
+  end
 
   private
   def basic_action
@@ -20,6 +26,24 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     flash[:notice] = "ログインしました"
     redirect_to posts_path
+  end
+
+  def link_line_account
+    @omniauth = request.env["omniauth.auth"]
+
+    unless @omniauth && @omniauth["provider"].present? && @omniauth["uid"].present?
+      flash[:alert] = "LINE連携に失敗しました"
+      return redirect_to mypage_path
+    end
+
+    if User.exists?(provider: @omniauth["provider"], uid: @omniauth["uid"])
+      flash[:alert] = "このLINEアカウントは既に登録されています"
+    else
+      current_user.update!(provider: @omniauth["provider"], uid: @omniauth["uid"])
+      flash[:notice] = "LINEアカウントを紐付けました"
+    end
+
+    redirect_to mypage_path
   end
 
   # You should also create an action method in this controller like this:

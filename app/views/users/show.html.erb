@@ -9,6 +9,12 @@
 
     <%= link_to "プロフィールを編集", edit_user_registration_path, 
         class: "mt-4 sm:mt-0 inline-block text-blue-600 border border-blue-200 bg-white px-4 py-2 rounded-xl shadow-inner hover:shadow transition font-medium" %>
+    
+    <%= button_to "Lineで認証",
+        user_line_omniauth_authorize_path,
+        method: :post,
+        class: "w-full mt-3 px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition font-semibold",
+        data: { turbo: false } %>
   </div>
 </div>
 
